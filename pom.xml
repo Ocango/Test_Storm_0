@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xml声明，包括版本和编码方式 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!-- xmlns，xml的默认命名空间；xmlns:xsi，自定义前缀的命名空间；xsi:schemaLocation，由一个URI引用对组成，两个URI之间以空白符分隔。第一个URI是名称空间的名字，第二个URI给出模式文档的位置，模式处理器将从这个位置读取模式文档，该模式文档的目标名称空间必须与第一个URI相匹配。 -->
+  <modelVersion>4.0.0</modelVersion>
+  <!-- 指定了当前pom.xml版本 -->
+  <groupId>Ocango</groupId>
+  <!-- <groupId>反写公司网址+项目名</groupId>：主项目标识，用于显示此项目属于哪个主项目下。 -->
+  <artifactId>storm_test</artifactId>
+  <!-- <artifactId>项目名+模块名</artifactId>：此项目属于主项目中的某个模块 -->
+  <version>1.0-SNAPSHOT</version>
+  <!-- 例如： 
+      当前项目的版本号0.0.1： 。
+      第一个0标识大版本号；  
+      第二个0表示分支版本号；  
+      第三个0表示小版本号 。
+  版本类型：  
+      snapshot：快照    
+      alpha：内部测试        
+      beta：公测         
+      release：稳定          
+      GA：正式发布 -->
+  <!-- <packaging></packaging>：Maven项目打包的方式。默认是jar，还可以打包为war、pom、zip。-->
+  <!-- 依赖列表： 参考 https://blog.csdn.net/codejas/article/details/79490030 -->
+  <dependencies>
+   	<dependency>
+  		<groupId>org.apache.storm</groupId>
+  		<artifactId>storm-core</artifactId>
+  		<version>1.2.2</version>
+  		<scope>provided</scope><!-- ：依赖的范围，provided不参与打包 -->
+      <!-- <optional></optional>：有true、false两个值，默认是false；意思为：设置依赖是否可选。如果为true，则子项目必须显式引入此依赖。
+      <exclusions>：排除传递依赖的列表
+        <exclusion></exclusion>：
+      </exclusions> -->
+  	</dependency>
+  </dependencies>
+  <!-- 为构建行为提供支持： -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <build>
+    <plugins> <!-- ：插件列表 https://www.cnblogs.com/zhangxh20/p/6298062.html -->
+      <plugin>
+      <!-- 使用编译器的定义，比如jdk版本等 -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+      <!-- 用于把多个jar包，打成1个jar包 -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <finalName>uber-storm_test-1.0</finalName>
+        </configuration>
+      </plugin> 
+      
+    </plugins>
+  </build>
+  <!-- 聚合运行多个的maven项目: -->
+  <!-- <modules>
+    <model></model>
+  </modules> -->
+</project>
