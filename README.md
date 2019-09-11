@@ -100,10 +100,10 @@ Maven的基础见识详见[看懂MAVEN的结构目录](https://www.jianshu.com/p
 </project>
 ```
 *备注说明下关于原文件的修改：*
-1.storm-core原先是0.10.0，但是server个人配置的最新的1.2.2，同时这个问题也涉及到对包名的修改。此处见开头。
-2.指定编译使用UTF-8。
-3.原先maven-shade-plugin未指定版本，这里增加了指定，不然会警报。
-#配置SPOUT
+1. storm-core原先是0.10.0，但是server个人配置的最新的1.2.2，同时这个问题也涉及到对包名的修改。此处见开头。
+2. 指定编译使用UTF-8。
+3. 原先maven-shade-plugin未指定版本，这里增加了指定，不然会警报。
+# 配置SPOUT
 ```
 package count_word;
 import org.apache.storm.spout.SpoutOutputCollector;
@@ -172,7 +172,7 @@ public class RandomSentenceSpout extends BaseRichSpout {
 }
 ```
 大多数函数意义在备注中已写全
-#配置BOLT和TOPOLOGY
+# 配置BOLT和TOPOLOGY
 ```
 package count_word;
 
