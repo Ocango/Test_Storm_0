@@ -10,14 +10,16 @@ Maven的基础见识详见[看懂MAVEN的结构目录](https://www.jianshu.com/p
 > In the latest version, the class packages have been changed from "backtype.storm" to "org.apache.storm" so the topology code compiled with older version won't run on the Storm 1.0.0 just like that. Backward compatibility is available through following configuration
 > 
 > client.jartransformer.class: "org.apache.storm.hack.StormShadeTransformer"
+
 所以一定要注意在网上找资料和学习的时候，区分不同版本。鱼因为这个把server端和local端JDK全重装了，最后才发现问题。
-#Storm开发本地调试
+# Storm开发本地调试
 作为初学者，首先要学会用，所以简单直接一点，我们去maven库里面看看有没有可以学习的内容。
 ![搜索MAVEN库](https://upload-images.jianshu.io/upload_images/15615374-0121d5998eb74b5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 果然，看介绍是一个git上的单词计数器，好的来试试效果。
+
 ![Word Count program目录架构](https://upload-images.jianshu.io/upload_images/15615374-5b462153fdf3d608.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 如果找不到此storm示例项目，可以直接按以下的原文件进行配置。
-#POM.XML配置
+# POM.XML配置
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- xml声明，包括版本和编码方式 -->
